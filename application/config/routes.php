@@ -59,15 +59,13 @@ $route['dashboard']['GET'] = 'view/dashboard';
 $route['rps/(:any)']['GET'] = 'view/rps';
 $route['components/(:any)']['get'] = 'view/components/$1';
 
-$route['api/auth/login'] = [
-  'POST' => 'auth/login',
-];
-$route['api/auth/register'] = [
-  'POST' => 'auth/register',
-];
-$route['api/auth/logout'] = [
-  'GET' => 'auth/logout',
-];
+$route['api/auth/login']['POST'] = 'auth/login';
+$route['api/auth/register']['POST'] = 'auth/register';
+$route['api/auth/logout']['GET'] = 'auth/logout';
+
+$route['api/prodi']['GET'] = 'prodi/index';
+$route['api/matkul']['GET'] = 'matkul/index';
+
 $route['api/rps'] = [
   'GET' => 'rps/index',
   'POST' => 'rps/insert',

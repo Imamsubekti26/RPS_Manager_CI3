@@ -11,7 +11,7 @@ function dropdownSearch({searchInput, dropdown, url, sizee, callback}){
       this.getData(searchText)
     },
     getData: function(searchText) {
-      fetch(`./data/${url}?search=${searchText}`)
+      fetch(`${window.location.origin}/api/${url}?search=${searchText}`)
       .then(response => response.json())
       .then(data => {
         this.tampilkanDropdown(data);

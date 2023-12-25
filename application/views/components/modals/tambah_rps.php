@@ -15,7 +15,7 @@
           aria-label="Close"
         ></button>
       </div>
-      <form class="" method="POST" action="<?=base_url('dashboard')?>">
+      <form class="" method="POST" action="<?=base_url('api/rps')?>">
         <div class="mx-5 modal-body">
           <section id="identitas_dosen">
             <p><strong>Identitas Dosen</strong></p>
