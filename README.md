@@ -23,7 +23,7 @@ Program RPS manager menggunakan CodeIgniter 3 yang saya buat untuk memenuhi tuga
 | `auth/login`    | `GET`  | menampilkan halaman login      |
 | `auth/register` | `GET`  | menampilkan halaman register   |
 | `dashboard`     | `GET`  | menampilkan halaman dashboard  |
-| `RPS`           | `GET`  | menampilkan halaman detail RPS |
+| `rps/(:id_rps)` | `GET`  | menampilkan halaman detail RPS |
 
 ### Backend
 
