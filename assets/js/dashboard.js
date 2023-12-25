@@ -15,7 +15,7 @@ const toggleFilter = (x) => {
 
 // untuk mendapatkan data dari db
 const getData = async (filter, search) => {
-  const x = fetch(`./data/jadwal?filter=${filter}&search=${search}`);
+  const x = fetch(`${window.location.origin}/api/rps?filter=${filter}&search=${search}`);
   const d = (await x).json();
   return await d;
 };
