@@ -53,8 +53,15 @@ class Rps extends CI_Controller {
   {
     $r = $this->Jadwal_model->delete($id);
         
+    $_SESSION['msg'] = $r ? "berhasil menghapus data" : "gagal menghapus data";
+    $this->session->mark_as_flash('msg');
+  }
+
+  public function editStatus($id_rps, $newStatus)
+  {
+    $r = $this->Jadwal_model->updateStatus($id_rps, $newStatus);
+        
     $_SESSION['msg'] = $r ? "berhasil mengedit data" : "gagal mengedit data";
     $this->session->mark_as_flash('msg');
-    redirect(base_url("rps/$id"));
   }
 }

@@ -47,13 +47,18 @@ function changeTab(tabKeBarapa) {
 
 }
 
-// mengubah status (draf, aktif. arsip)
+// mengubah status (draf, aktif. arsip) dan menghapus rps
 function changeStatusData(status) {
   const id = searchParams(2);
   if (confirm("apakah kamu yakin?")) {
-    window.location.href = `./routes/matkul.php?x=${status}&id=${id}`;
+    if (status < 0) {
+      fetch(`${window.location.origin}/api/rps/${id}`, {method: "DELETE"});
+      window.location.href = `${window.location.origin}/dashboard`;
+    } else {
+      fetch(`${window.location.origin}/api/rps/${id}/status/${status}`, {method: "PUT"});
+      window.location.reload();
+    }
   }
-  // 31:hapus; 32:aktifkan; 33:arsipkan; 34:revisi; 35:salin
 }
 
 // tampilkan print page

@@ -56,7 +56,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['auth/login'] = 'view/login';
 $route['auth/register']['GET'] = 'view/register';
 $route['dashboard']['GET'] = 'view/dashboard';
-$route['rps/(:any)']['GET'] = 'view/rps';
+$route['rps/(:any)']['GET'] = 'view/rps/$1';
 $route['components/(:any)']['get'] = 'view/components/$1';
 
 $route['api/auth/login']['POST'] = 'auth/login';

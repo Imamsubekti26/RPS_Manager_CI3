@@ -6,11 +6,11 @@
     </a>
     <div class="d-flex gap-3 align-items-center">
       <?php if($status == 0):?>
-        <button class="btn btn-outline-danger" onclick="changeStatusData(31)">Hapus RPS</button>
-        <button class="btn btn-primary" onclick="changeStatusData(32)">Aktifkan RPS</button>
+        <button class="btn btn-outline-danger" onclick="changeStatusData(-1)">Hapus RPS</button>
+        <button class="btn btn-primary" onclick="changeStatusData(1)">Aktifkan RPS</button>
       <?php elseif($status == 1):?>
-        <button class="btn btn-outline-warning" onclick="changeStatusData(34)">Revisi RPS</button>
-        <button class="btn btn-outline-danger" onclick="changeStatusData(33)">Arsipkan</button>
+        <button class="btn btn-outline-warning" onclick="changeStatusData(0)">Revisi RPS</button>
+        <button class="btn btn-outline-danger" onclick="changeStatusData(2)">Arsipkan</button>
         <button class="btn btn-primary" onclick="changeStatusData(35)">Salin RPS</button>
         <?php elseif($status == 2):?>
           <button class="btn btn-primary" onclick="changeStatusData(35)">Salin RPS</button>
