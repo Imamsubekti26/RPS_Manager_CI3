@@ -117,11 +117,12 @@ $route['api/rps/(:num)/tugas/(:num)'] = [
   'PUT' => 'tugas/edit/$1/$2',
   'DELETE' => 'tugas/delete/$2',
 ];
-$route['api/rps/(:num)/ren'] = [
+$route['api/rps/(:num)/rencana'] = [
   'GET' => 'rencana/index/$1',
   'POST' => 'rencana/insert/$1',
 ];
-$route['api/rps/(:num)/ren/(:num)'] = [
+$route['api/rps/(:num)/rencana/(:num)'] = [
+  'GET' => 'rencana/show/$2',
   'PUT' => 'rencana/edit/$1/$2',
   'DELETE' => 'rencana/delete/$2',
 ];

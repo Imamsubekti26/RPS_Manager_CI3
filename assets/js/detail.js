@@ -171,8 +171,8 @@ function AccordionAction({primaryKey, namaForm, namaModal, namaComponent, urlApi
   return {
     GetAll: function() {
       $(namaForm).html('');
-      const id = searchParams(2);
-      fetch(`../data/${urlApi}/${id}`)
+      const id_rps = searchParams(2);
+      fetch(`../api/rps/${id_rps}/${urlApi}`)
       .then(r => r.json())
       .then(r => {
         $(namaForm).render(`../../components/${namaComponent}`, r, true);
@@ -180,7 +180,8 @@ function AccordionAction({primaryKey, namaForm, namaModal, namaComponent, urlApi
     },
 
     GetOne: function(id) {
-      fetch(`./routes/${urlApi}.php?x=4&id=${id}`)
+      const id_rps = searchParams(2);
+      fetch(`../api/rps/${id_rps}/${urlApi}/${id}`)
       .then(r => r.json())
       .then(r => {
         dataForm(namaModal).Fill(r);
@@ -188,9 +189,10 @@ function AccordionAction({primaryKey, namaForm, namaModal, namaComponent, urlApi
       });
     },
 
-    Delete: function(id_unit){
+    Delete: function(id){
+      const id_rps = searchParams(2);
       if(!confirm("apakah kamu yakin untuk menghapus data ini?")) return;
-      fetch(`./routes/${urlApi}.php?x=3&id=${id_unit}`, {method:'DELETE'})
+      fetch(`../api/rps/${id_rps}/${urlApi}/${id}`, {method:'DELETE'})
       .then(r => r.json())
       .then(r => { if(r.success) this.GetAll() });
     },
@@ -199,7 +201,7 @@ function AccordionAction({primaryKey, namaForm, namaModal, namaComponent, urlApi
       const data = dataForm(namaModal).GetData();
       const id_rps = searchParams(2);
 
-      fetch(`./routes/${urlApi}.php?x=1&id=${id_rps}`, {
+      fetch(`../api/rps/${id_rps}/${urlApi}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
@@ -218,12 +220,12 @@ function AccordionAction({primaryKey, namaForm, namaModal, namaComponent, urlApi
     
     Update: function() {
       const data = dataForm(namaModal).GetData();
-      const id_jadwal = searchParams(3);
-
-      fetch(`./routes/${urlApi}.php?x=5&id=${data[primaryKey]}`, {
+      const id_rps = searchParams(2);
+      const id = data[primaryKey];
+      fetch(`../api/rps/${id_rps}/${urlApi}/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({id_jadwal, ...data})
+        body: JSON.stringify({id_rps, ...data})
       })
         .then(r => r.json() )
         .then(r => {
