@@ -72,8 +72,4 @@ class View extends CI_Controller {
     $this->load->view('templates/footer');
   }
 
-	public function components($compName)
-	{
-		$this->load->view("components/accordions/$compName");
-	}
 }

@@ -27,13 +27,13 @@ Program RPS manager menggunakan CodeIgniter 3 yang saya buat untuk memenuhi tuga
 <details>
 <summary>Frontend</summary>
 
-| Endpoint        | Method | Fungsi                         |
-| --------------- | ------ | ------------------------------ |
-| `auth/login`    | `GET`  | menampilkan halaman login      |
-| `auth/register` | `GET`  | menampilkan halaman register   |
-| `dashboard`     | `GET`  | menampilkan halaman dashboard  |
-| `rps/(:id_rps)` | `GET`  | menampilkan halaman detail RPS |
-| `print`         | `GET`  | menampilkan halaman print      |
+| Endpoint          | Method | Fungsi                         |
+| ----------------- | ------ | ------------------------------ |
+| `auth/login`      | `GET`  | menampilkan halaman login      |
+| `auth/register`   | `GET`  | menampilkan halaman register   |
+| `dashboard`       | `GET`  | menampilkan halaman dashboard  |
+| `rps/(:id_rps)`   | `GET`  | menampilkan halaman detail RPS |
+| `print/(:id_rps)` | `GET`  | menampilkan halaman print      |
 
 </details>
 

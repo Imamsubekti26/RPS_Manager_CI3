@@ -23,7 +23,7 @@
 .full-body {
   width: 100vw;
   height: 100vh;
-  background-image: url(https://cdn.twproject.com/blog/wp-content/uploads/project-documents.jpg);
+  background-image: url(../img/bg-login.jpg);
 }
 
 .full-body::after {

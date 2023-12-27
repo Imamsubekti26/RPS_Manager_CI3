@@ -37,7 +37,7 @@
     <div class="d-grid gap-2">
       <button class="btn btn-light border">
         <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2008px-Google_%22G%22_Logo.svg.png"
+          src="<?= base_url('assets/img/google_icon.png') ?>"
           alt="google-icon"
           width="16"
           height="16"
