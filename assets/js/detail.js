@@ -253,8 +253,8 @@ function ListAction({urlApi, namaForm, namaModal, callback}){
   return {
     GetAll: function(){
       $(namaForm).html('');
-      const id = searchParams(2);
-      fetch(`../data/${urlApi}/${id}`)
+      const id_rps = searchParams(2);
+      fetch(`../api/rps/${id_rps}/${urlApi}`)
       .then(r => r.json())
       .then(r => {
         let text = callback(r)
@@ -268,7 +268,7 @@ function ListAction({urlApi, namaForm, namaModal, callback}){
 
       if (inputan.val() === '') return;
       
-      fetch(`./routes/${urlApi}.php?x=1&id=${id_rps}`, {
+      fetch(`../api/rps/${id_rps}/${urlApi}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
@@ -283,9 +283,10 @@ function ListAction({urlApi, namaForm, namaModal, callback}){
           dataForm(namaModal).Clear();
         })
     },
-    Delete: function(id){
+    Delete: function(id_ref){
+      const id_rps = searchParams(2);
       if(!confirm("apakah kamu yakin untuk menghapus data ini?")) return;
-        fetch(`./routes/${urlApi}.php?x=3&id=${id}`, {method:'DELETE'})
+      fetch(`../api/rps/${id_rps}/${urlApi}/${id_ref}`, {method:'DELETE'})
         .then(r => r.json())
         .then(r => { if(r.success) this.GetAll() });
     },
