@@ -5,7 +5,7 @@
         <h3>Edit Informasi Dasar</h3>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="<?=base_url('detail/'.$id)?>" method="POST">
+      <form>
         <div class="modal-body">
           <div class="row mb-3">
             <div class="col-4"><label>Semester</label></div>

@@ -37,16 +37,16 @@ class Rps extends CI_Controller {
 
   public function editInfo($id)
   {
-    $semester = $_POST['semester'];
-    $tahun = $_POST['tahun'];
-    $sks_teori = $_POST['sks_teori'];
-    $sks_praktek = $_POST['sks_praktek'];
-
+    $data = json_decode(file_get_contents('php://input'), true);
+    $semester = $data['semester'];
+    $tahun = $data['tahun'];
+    $sks_teori = $data['sks_teori'];
+    $sks_praktek = $data['sks_praktek'];
+    
     $r = $this->Jadwal_model->updateBasic($id, $semester, $sks_teori, $sks_praktek, $tahun);
-        
+    
     $_SESSION['msg'] = $r ? "berhasil mengedit data" : "gagal mengedit data";
     $this->session->mark_as_flash('msg');
-    redirect(base_url("rps/$id"));
   }
 
   public function delete($id)

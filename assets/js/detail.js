@@ -1,3 +1,4 @@
+// mendapatkan id dari url
 function searchParams(urut) {
   const currentURL = window.location.href;
   const urlObject = new URL(currentURL);
@@ -47,7 +48,7 @@ function changeTab(tabKeBarapa) {
 
 }
 
-// mengubah status (draf, aktif. arsip) dan menghapus rps
+// mengubah status (draf, aktif. arsip) dan menghapus rps jika status adalah -1
 function changeStatusData(status) {
   const id = searchParams(2);
   if (confirm("apakah kamu yakin?")) {
@@ -290,6 +291,25 @@ function ListAction({urlApi, namaForm, namaModal, callback}){
     },
   };
 }
+
+// mengirim update data basic info menggunakan metode put
+function sendEditBasicInfo(){
+  const targetForm = $('#modal-change-basic-info');
+  targetForm.submit(function(event){
+    event.preventDefault();
+
+    data = dataForm('#modal-change-basic-info').GetData();
+    id = searchParams(2);
+    fetch(`../api/rps/${id}`, {
+      method: "PUT",
+      headers: {'Content-Type': 'application/json'},
+      body : JSON.stringify(data)
+    })
+    window.location.reload();
+  })
+}
+
+sendEditBasicInfo();
 
 function UnitPem(){
   const primaryKey = "id_unit"
