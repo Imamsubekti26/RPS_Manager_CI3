@@ -63,8 +63,9 @@ function changeStatusData(status) {
 }
 
 // tampilkan print page
-function showPrintPage (id) {
-  window.open(`./print.php${id}`, "_blank");
+function showPrintPage (section) {
+  const id = searchParams(2)
+  window.open(`../print/${id}${section}`, "_blank");
 }
 
 // manipulasi form (baca form, bersihkan form, isi form)
