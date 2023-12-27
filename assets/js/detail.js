@@ -101,9 +101,9 @@ function dataForm(idForm) {
 function TextareaAction() {
   return {
     codeX: {
-      formgambaranumum: 41,
-      formcapaianpembelajaran: 42,
-      formprasyarat: 43,
+      formgambaranumum: 'gam',
+      formcapaianpembelajaran: 'cap',
+      formprasyarat: 'pra',
     },
 
     selectForm: function(id) {
@@ -116,8 +116,8 @@ function TextareaAction() {
 
     fetching: function(id, components){
       const id_rps = searchParams(2);
-      fetch(`./routes/matkul.php?x=${this.codeX[id]}&id=${id_rps}`, {
-        method: "POST",
+      fetch(`../api/rps/${id_rps}/${this.codeX[id]}`, {
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ value: components.form.value }),
       })

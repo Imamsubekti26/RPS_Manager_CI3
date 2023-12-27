@@ -64,4 +64,37 @@ class Rps extends CI_Controller {
     $_SESSION['msg'] = $r ? "berhasil mengedit data" : "gagal mengedit data";
     $this->session->mark_as_flash('msg');
   }
+
+  public function editGam($id)
+  {
+    $data = json_decode(file_get_contents('php://input'), true);
+    
+    $value = $data['value'];
+    $r = $this->Jadwal_model->updateText($id, 'gambaran_umum', $value);
+
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode(['success' =>$r]);
+  }
+
+  public function editCap($id)
+  {
+    $data = json_decode(file_get_contents('php://input'), true);
+    
+    $value = $data['value'];
+    $r = $this->Jadwal_model->updateText($id, 'capaian_pembelajaran', $value);
+
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode(['success' =>$r]);
+  }
+
+  public function editPra($id)
+  {
+    $data = json_decode(file_get_contents('php://input'), true);
+    
+    $value = $data['value'];
+    $r = $this->Jadwal_model->updateText($id, 'prasyarat', $value);
+
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode(['success' =>$r]);
+  }
 }
