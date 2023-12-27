@@ -43,9 +43,9 @@
         />
       </div>
       <hr />
-      <h5 class="text-center fw-bold">MATA KULIAH: BLAAA</h5>
+      <h5 class="text-center fw-bold">MATA KULIAH: <?= $basic['nama_matkul']?></h5>
       <hr />
-      <h5 class="text-center fw-bold">Program Studi: D3 Teknik Informatika</h5>
+      <h5 class="text-center fw-bold">Program Studi: <?= $basic['nama_prodi']?></h5>
       <hr />
       <div class="row text-center">
         <div class="col">Nomor</div>
@@ -56,8 +56,8 @@
       <hr />
       <div class="row text-center">
         <div class="col">RPS-DT-032</div>
-        <div class="col">2021</div>
-        <div class="col">15 September 2021</div>
+        <div class="col"><?= $basic['tahun']?></div>
+        <div class="col">15 September <?= $basic['tahun']?></div>
         <div class="col">00</div>
       </div>
       <hr />
@@ -69,12 +69,12 @@
         </div>
         <div class="col">
           <p>Diperiksa Oleh,</p>
-          <p>Kaprodi D3 Teknik Informatika</p>
+          <p>Kaprodi <?= $basic['nama_prodi']?></p>
         </div>
         <div class="col"><p>Disusun Oleh,</p></div>
         <div class="col">
           <p>Dikendalikan oleh,</p>
-          <p>Sekretaris Prodi D3 Teknik Informatika</p>
+          <p>Sekretaris Prodi <?= $basic['nama_prodi']?></p>
         </div>
       </div>
       <hr />
@@ -128,7 +128,7 @@
       <div class="text-center mt-4">
         <h5 class="fw-bold">UNIVERSITAS AMIKOM YOGYAKARTA</h5>
         <h5 class="fw-bold">YOGYAKARTA</h5>
-        <h5 class="fw-bold">2021</h5>
+        <h5 class="fw-bold"><?= $basic['tahun']?></h5>
       </div>
       <table class="table table-bordered small">
         <tr>
@@ -145,8 +145,8 @@
           </td>
           <td rowspan="2" width="50%" class="text-center">
             <h6>RENCANA PEMBELAJARAN SEMESTER</h6>
-            <h6>PROGRAM STUDI: D3 Teknik Informatika</h6>
-            <h6>MATAKULIAH METODOLOGI PENELITIAN (DT032)</h6>
+            <h6>PROGRAM STUDI:<?= $basic['nama_prodi']?></h6>
+            <h6>MATAKULIAH <?= $basic['nama_matkul']?> (DT032)</h6>
           </td>
           <td width="10%" class="text-end">
             <i>Nomor</i><br />
@@ -170,24 +170,23 @@
       <table class="table table-bordered mt-3 mb-4 small">
         <tr>
           <td width="20%">Program Studi</td>
-          <td width="30%">Teknik Informatika</td>
+          <td width="30%"><?= $basic['nama_prodi']?></td>
           <td width="10%">Semester</td>
-          <td width="40%" colspan="6">Genap (4)</td>
+          <td width="40%" colspan="6"><?= $basic['semester'] % 2 == 0 ? 'Genap' : 'Gasal' ?> (<?= $basic['semester']?>)</td>
         </tr>
         <tr>
           <td>Nama & Kode Mata Kuliah</td>
-          <td>Pemrograman Web 1 - DT032</td>
+          <td><?= $basic['nama_matkul']?> - DT032</td>
           <td>Bobot SKS</td>
-          <td colspan="6">2 Teori 2 Praktek</td>
+          <td colspan="6"><?= $basic['sks_teori']?> Teori <?= $basic['sks_praktek']?> Praktek</td>
         </tr>
         <tr>
           <td rowspan="3">Detail Persentase Penilaian</td>
           <td rowspan="3">
             <ul>
-              <li>20% Presensi</li>
-              <li>20% Presensi</li>
-              <li>20% Presensi</li>
-              <li>20% Presensi</li>
+              <?php foreach ($nilai as $key) :?>
+              <li><?=$key['persentase']?>% <?=$key['deskripsi']?></li>
+              <?php endforeach ?>
             </ul>
           </td>
           <td>Dosen Pengampu</td>
@@ -213,63 +212,19 @@
         <strong>2. Gambaran Umum</strong>
       </div>
       <div class="small mt-3 mb-4 ms-4">
-        <ol>
-          <li>
-            Perkuliahan ini diselenggarakan 14 kali pertemuan secara teori dan 2
-            kali pertemuan untuk melaksanakan UTS (Ujian Tengah Semester) dan
-            UAS (Ujian Akhir Semester) secara sinkronus menggunakan Zoom atau
-            Google Meet dan Asinkronus menggunakan LMS.
-          </li>
-          <li>
-            Materi yang disampaikan meliputi: Konsep dasar penelitian, Metode
-            dan Metodologi Penelitian, Topik Penelitian, Literatur Review,
-            Identifikasi Masalah dan Perumusan Masalah, Teknik Pengumpulan,
-            Pengolahan Data dan Teknik Menulis Jurnal, Paper ataupun Proposal
-            Tugas Akhir.
-          </li>
-          <li>
-            Pada akhir perkuliahan mahasiswa diwajibkan untuk menulis jurnal,
-            paper ataupun proposal Tugas Akhir yang akan dikerjakan.
-          </li>
-        </ol>
+        <?= $basic['gambaran_umum']?>
       </div>
       <div class="bg-light p-1" id="capaian-pembelajaran">
         <strong>3. Capaian Pembelajaran</strong>
       </div>
       <div class="small mt-3 mb-4 ms-4">
-        <ol>
-          <li>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut,
-            doloremque!
-          </li>
-          <li>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut,
-            doloremque!
-          </li>
-          <li>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut,
-            doloremque!
-          </li>
-          <li>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut,
-            doloremque!
-          </li>
-          <li>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut,
-            doloremque!
-          </li>
-        </ol>
+        <?= $basic['capaian_pembelajaran']?>
       </div>
       <div class="bg-light p-1" id="prasyarat-pengetahuan-awal">
         <strong>4. Prasyarat dan Pengetahuan awal</strong>
       </div>
       <div class="small mt-3 mb-4 ms-4">
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus
-          accusamus architecto veritatis magnam, praesentium incidunt
-          exercitationem, voluptatum dolore voluptatem aliquam, officia ab
-          placeat iusto sapiente fugiat dolorem cumque corporis accusantium.
-        </p>
+        <?= $basic['prasyarat']?>
       </div>
       <div class="bg-light p-1" id="unit-pembelajaran-awal">
         <strong>5. Unit-unit Pembelajaran Awal</strong>
@@ -286,141 +241,17 @@
             <th width="12.5%">Bahan Ajar</th>
           </thead>
           <tbody>
+            <?php foreach ($unit as $key) : ?>
             <tr>
-              <td>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed
-                modi vero atque voluptatum est voluptatibus.
-              </td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed
-                modi vero atque voluptatum est voluptatibus.
-              </td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed
-                modi vero atque voluptatum est voluptatibus.
-              </td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed
-                modi vero atque voluptatum est voluptatibus.
-              </td>
-              <td>Lorem ipsum</td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. In,
-                dolorem!
-              </td>
-              <td>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor,
-                fugit.
-              </td>
+              <td><?= $key['kemampuan']?></td>
+              <td><?= $key['indikator']?></td>
+              <td><?= $key['bahan_kajian']?></td>
+              <td><?= $key['metode_pem']?></td>
+              <td><?= $key['lama_waktu']?></td>
+              <td><?= $key['metode_pen']?> </td>
+              <td><?= $key['bahan_ajar']?></td>
             </tr>
-            <tr>
-              <td>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed
-                modi vero atque voluptatum est voluptatibus.
-              </td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed
-                modi vero atque voluptatum est voluptatibus.
-              </td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed
-                modi vero atque voluptatum est voluptatibus.
-              </td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed
-                modi vero atque voluptatum est voluptatibus.
-              </td>
-              <td>Lorem ipsum</td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. In,
-                dolorem!
-              </td>
-              <td>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor,
-                fugit.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed
-                modi vero atque voluptatum est voluptatibus.
-              </td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed
-                modi vero atque voluptatum est voluptatibus.
-              </td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed
-                modi vero atque voluptatum est voluptatibus.
-              </td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed
-                modi vero atque voluptatum est voluptatibus.
-              </td>
-              <td>Lorem ipsum</td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. In,
-                dolorem!
-              </td>
-              <td>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor,
-                fugit.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed
-                modi vero atque voluptatum est voluptatibus.
-              </td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed
-                modi vero atque voluptatum est voluptatibus.
-              </td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed
-                modi vero atque voluptatum est voluptatibus.
-              </td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed
-                modi vero atque voluptatum est voluptatibus.
-              </td>
-              <td>Lorem ipsum</td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. In,
-                dolorem!
-              </td>
-              <td>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor,
-                fugit.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed
-                modi vero atque voluptatum est voluptatibus.
-              </td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed
-                modi vero atque voluptatum est voluptatibus.
-              </td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed
-                modi vero atque voluptatum est voluptatibus.
-              </td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed
-                modi vero atque voluptatum est voluptatibus.
-              </td>
-              <td>Lorem ipsum</td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. In,
-                dolorem!
-              </td>
-              <td>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor,
-                fugit.
-              </td>
-            </tr>
+            <?php endforeach?>
           </tbody>
         </table>
       </div>
@@ -438,106 +269,16 @@
             <th width="23%">Indikator Penilaian</th>
           </thead>
           <tbody>
+            <?php foreach ($tugas as $key) : ?>
             <tr>
-              <td>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt,
-                ipsum.
-              </td>
-              <td>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Tempore ea quas vitae obcaecati ut?
-              </td>
-              <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</td>
-              <td>Lorem ipsum dolor sit amet.</td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum,
-                eius?
-              </td>
-              <td>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque
-                quibusdam nemo distinctio quos aliquam molestias.
-              </td>
+              <td><?= $key['tugas']?></td>
+              <td><?= $key['kemampuan']?></td>
+              <td><?= $key['lama_waktu']?></td>
+              <td><?= $key['bobot_nilai']?></td>
+              <td><?= $key['kriteria_pen']?></td>
+              <td><?= $key['indikator_pen']?></td>
             </tr>
-            <tr>
-              <td>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt,
-                ipsum.
-              </td>
-              <td>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Tempore ea quas vitae obcaecati ut?
-              </td>
-              <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</td>
-              <td>Lorem ipsum dolor sit amet.</td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum,
-                eius?
-              </td>
-              <td>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque
-                quibusdam nemo distinctio quos aliquam molestias.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt,
-                ipsum.
-              </td>
-              <td>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Tempore ea quas vitae obcaecati ut?
-              </td>
-              <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</td>
-              <td>Lorem ipsum dolor sit amet.</td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum,
-                eius?
-              </td>
-              <td>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque
-                quibusdam nemo distinctio quos aliquam molestias.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt,
-                ipsum.
-              </td>
-              <td>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Tempore ea quas vitae obcaecati ut?
-              </td>
-              <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</td>
-              <td>Lorem ipsum dolor sit amet.</td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum,
-                eius?
-              </td>
-              <td>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque
-                quibusdam nemo distinctio quos aliquam molestias.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt,
-                ipsum.
-              </td>
-              <td>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Tempore ea quas vitae obcaecati ut?
-              </td>
-              <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</td>
-              <td>Lorem ipsum dolor sit amet.</td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum,
-                eius?
-              </td>
-              <td>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque
-                quibusdam nemo distinctio quos aliquam molestias.
-              </td>
-            </tr>
+            <?php endforeach ?>
           </tbody>
         </table>
       </div>
@@ -546,26 +287,11 @@
       </div>
       <div class="small mt-3 mb-4 ms-3">
         <ol>
+          <?php foreach ($referensi as $key) : ?>
           <li>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio,
-            voluptates.
+            <?= $key['deskripsi'] ?>
           </li>
-          <li>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio,
-            voluptates.
-          </li>
-          <li>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio,
-            voluptates.
-          </li>
-          <li>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio,
-            voluptates.
-          </li>
-          <li>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio,
-            voluptates.
-          </li>
+          <?php endforeach ?>
         </ol>
       </div>
       <div class="bg-light p-1" id="rencana-pelaksanaan-pembelajaran">
@@ -583,86 +309,17 @@
             <th width="12.5%">Penilaian</th>
           </thead>
           <tbody>
+            <?php foreach ($rencana as $key): ?>
             <tr>
-              <td>1</td>
-              <td>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Voluptate, molestias.
-              </td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Voluptatum odit iste recusandae voluptas deserunt, dolores est
-                possimus commodi ipsum quis.
-              </td>
-              <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</td>
-              <td>Lorem ipsum dolor sit amet.</td>
-              <td>Lorem ipsum dolor sit amet.</td>
-              <td>Lorem, ipsum.</td>
+              <td><?= $key['pertemuan_ke']?></td>
+              <td><?= $key['kemampuan']?></td>
+              <td><?= $key['indikator']?></td>
+              <td><?= $key['topik_subtopik']?></td>
+              <td><?= $key['strategi']?></td>
+              <td><?= $key['lama_waktu']?></td>
+              <td><?= $key['penilaian']?></td>
             </tr>
-            <tr>
-              <td>2</td>
-              <td>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Voluptate, molestias.
-              </td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Voluptatum odit iste recusandae voluptas deserunt, dolores est
-                possimus commodi ipsum quis.
-              </td>
-              <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</td>
-              <td>Lorem ipsum dolor sit amet.</td>
-              <td>Lorem ipsum dolor sit amet.</td>
-              <td>Lorem, ipsum.</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Voluptate, molestias.
-              </td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Voluptatum odit iste recusandae voluptas deserunt, dolores est
-                possimus commodi ipsum quis.
-              </td>
-              <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</td>
-              <td>Lorem ipsum dolor sit amet.</td>
-              <td>Lorem ipsum dolor sit amet.</td>
-              <td>Lorem, ipsum.</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Voluptate, molestias.
-              </td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Voluptatum odit iste recusandae voluptas deserunt, dolores est
-                possimus commodi ipsum quis.
-              </td>
-              <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</td>
-              <td>Lorem ipsum dolor sit amet.</td>
-              <td>Lorem ipsum dolor sit amet.</td>
-              <td>Lorem, ipsum.</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Voluptate, molestias.
-              </td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Voluptatum odit iste recusandae voluptas deserunt, dolores est
-                possimus commodi ipsum quis.
-              </td>
-              <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</td>
-              <td>Lorem ipsum dolor sit amet.</td>
-              <td>Lorem ipsum dolor sit amet.</td>
-              <td>Lorem, ipsum.</td>
-            </tr>
+            <?php endforeach ?>
           </tbody>
         </table>
       </div>

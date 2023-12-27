@@ -7,6 +7,11 @@ class View extends CI_Controller {
   {
     parent::__construct();
     $this->load->model('Jadwal_model');
+    $this->load->model('Ref_model');
+    $this->load->model('Unit_model');
+    $this->load->model('Nilai_model');
+    $this->load->model('Tugas_model');
+    $this->load->model('Rencana_model');
   }
   public function index()
   {
@@ -41,10 +46,23 @@ class View extends CI_Controller {
     $this->load->view('templates/footer');
 	}
 
-  public function print()
+  public function print($id)
   {
+    $data = [
+      'basic' => $this->Jadwal_model->getOne($id),
+      'referensi' => $this->Ref_model->getAll($id),
+      'unit' => $this->Unit_model->getAll($id),
+      'nilai' => $this->Nilai_model->getAll($id),
+      'tugas' => $this->Tugas_model->getAll($id),
+      'rencana' => $this->Rencana_model->getAll($id),
+    ];
+
+    // echo "<pre>";
+    // print_r($data);
+    // echo "</pre>";
+    // die();
     $this->load->view('templates/header', ['title' => 'Detail | RPS Manager']);
-    $this->load->view('print');
+    $this->load->view('print', $data);
     $this->load->view('templates/footer');
   }
 
