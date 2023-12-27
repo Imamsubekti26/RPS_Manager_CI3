@@ -86,7 +86,6 @@ $route['api/rps/(:num)/cap'] = [
 $route['api/rps/(:num)/pra'] = [
   'PUT' => 'rps/editPra/$1',
 ];
-// sampai sini
 $route['api/rps/(:num)/referensi'] = [
   'GET' => 'ref/index/$1',
   'POST' => 'ref/insert/$1',
@@ -99,6 +98,7 @@ $route['api/rps/(:num)/unit'] = [
   'POST' => 'unit/insert/$1',
 ];
 $route['api/rps/(:num)/unit/(:num)'] = [
+  'GET' => 'unit/show/$2',
   'PUT' => 'unit/edit/$1/$2',
   'DELETE' => 'unit/delete/$2',
 ];
@@ -114,6 +114,7 @@ $route['api/rps/(:num)/tugas'] = [
   'POST' => 'tugas/insert/$1',
 ];
 $route['api/rps/(:num)/tugas/(:num)'] = [
+  'GET' => 'tugas/show/$2',
   'PUT' => 'tugas/edit/$1/$2',
   'DELETE' => 'tugas/delete/$2',
 ];
