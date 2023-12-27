@@ -106,10 +106,10 @@ $route['api/rps/(:num)/nilai'] = [
   'GET' => 'persentase/index/$1',
   'POST' => 'persentase/insert/$1',
 ];
-$route['api/rps/(:num)/persen/(:num)'] = [
+$route['api/rps/(:num)/nilai/(:num)'] = [
   'DELETE' => 'persentase/delete/$2',
 ];
-$route['api/rps/(:num)/nilai'] = [
+$route['api/rps/(:num)/tugas'] = [
   'GET' => 'tugas/index/$1',
   'POST' => 'tugas/insert/$1',
 ];
