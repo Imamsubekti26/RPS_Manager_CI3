@@ -19,24 +19,32 @@ class View extends CI_Controller {
   }
 	public function login()
 	{
+    loginRequired(false);
+    
 		$this->load->view('templates/header', ['title' =>'Login | RPS Manager']);
     $this->load->view('login');
     $this->load->view('templates/footer');
 	}
 	public function register()
 	{
+    loginRequired(false);
+
 		$this->load->view('templates/header', ['title' =>'Register | RPS Manager']);
     $this->load->view('register');
     $this->load->view('templates/footer');
 	}
 	public function dashboard()
 	{
+    loginRequired();
+
 		$this->load->view('templates/header', ['title' =>'Dashboard | RPS Manager']);
     $this->load->view('dashboard');
     $this->load->view('templates/footer');
 	}
 	public function rps($id)
 	{
+    loginRequired();
+
 		$data = $this->Jadwal_model->getOne($id);
     $data['isDisableButton'] = ($data['status'] == 0)? '':'disabled';
     $data['id'] = $id;
@@ -48,6 +56,8 @@ class View extends CI_Controller {
 
   public function print($id)
   {
+    loginRequired();
+
     $data = [
       'basic' => $this->Jadwal_model->getOne($id),
       'referensi' => $this->Ref_model->getAll($id),
@@ -57,10 +67,6 @@ class View extends CI_Controller {
       'rencana' => $this->Rencana_model->getAll($id),
     ];
 
-    // echo "<pre>";
-    // print_r($data);
-    // echo "</pre>";
-    // die();
     $this->load->view('templates/header', ['title' => 'Detail | RPS Manager']);
     $this->load->view('print', $data);
     $this->load->view('templates/footer');

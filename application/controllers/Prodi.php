@@ -11,6 +11,8 @@ class Prodi extends CI_Controller {
 
   public function index()
   {
+    loginRequired();
+    
     $search = $_GET['search'];
     $data = $this->Prodi_model->getAll($search);
 

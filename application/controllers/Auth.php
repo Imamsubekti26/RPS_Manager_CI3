@@ -11,6 +11,8 @@ class Auth extends CI_Controller {
 
   public function login()
   {
+    loginRequired(false);
+    
     $nik = $_POST['nik'];
     $pass = md5($_POST['pass']);
 
@@ -33,6 +35,8 @@ class Auth extends CI_Controller {
 
   public function register()
   {
+    loginRequired(false);
+
     $nik = $_POST['nik'];
     $name = $_POST['name'];
     $pass = md5($_POST['pass'][0]);

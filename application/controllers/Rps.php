@@ -13,6 +13,8 @@ class Rps extends CI_Controller {
 
   public function index()
   {
+    loginRequired();
+
     $dosen = $_SESSION['user']['nik'];
     $filter = $_GET['filter'];
     $search = $_GET['search'];
@@ -25,6 +27,8 @@ class Rps extends CI_Controller {
 
   public function insert()
   {
+    loginRequired();
+
     $id_matkul = $this->Matkul_model->searchOrAdd($_POST['nama_matkul']);
     $id_prodi = $this->Prodi_model->searchOrAdd($_POST['nama_prodi']);
 
@@ -37,6 +41,8 @@ class Rps extends CI_Controller {
 
   public function editInfo($id)
   {
+    loginRequired();
+
     $data = json_decode(file_get_contents('php://input'), true);
     $semester = $data['semester'];
     $tahun = $data['tahun'];
@@ -51,6 +57,8 @@ class Rps extends CI_Controller {
 
   public function delete($id)
   {
+    loginRequired();
+
     $r = $this->Jadwal_model->delete($id);
         
     $_SESSION['msg'] = $r ? "berhasil menghapus data" : "gagal menghapus data";
@@ -59,6 +67,8 @@ class Rps extends CI_Controller {
 
   public function editStatus($id_rps, $newStatus)
   {
+    loginRequired();
+
     $r = $this->Jadwal_model->updateStatus($id_rps, $newStatus);
         
     $_SESSION['msg'] = $r ? "berhasil mengedit data" : "gagal mengedit data";
@@ -67,6 +77,8 @@ class Rps extends CI_Controller {
 
   public function editGam($id)
   {
+    loginRequired();
+
     $data = json_decode(file_get_contents('php://input'), true);
     
     $value = $data['value'];
@@ -78,6 +90,8 @@ class Rps extends CI_Controller {
 
   public function editCap($id)
   {
+    loginRequired();
+
     $data = json_decode(file_get_contents('php://input'), true);
     
     $value = $data['value'];
@@ -89,6 +103,8 @@ class Rps extends CI_Controller {
 
   public function editPra($id)
   {
+    loginRequired();
+    
     $data = json_decode(file_get_contents('php://input'), true);
     
     $value = $data['value'];

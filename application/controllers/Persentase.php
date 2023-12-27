@@ -11,6 +11,8 @@ class Persentase extends CI_Controller {
 
   public function index($id_rps)
   {
+    loginRequired();
+    
     $data = $this->Nilai_model->getAll($id_rps);
 
     header('Content-Type: application/json; charset=utf-8');
@@ -19,6 +21,8 @@ class Persentase extends CI_Controller {
 
   public function insert($id_rps)
   {
+    loginRequired();
+
     $data = json_decode(file_get_contents('php://input'), true);
     $deskripsi = $data['deskripsi'];
     $persentase = $data['persentase'];
@@ -30,6 +34,8 @@ class Persentase extends CI_Controller {
 
   public function delete($id_nilai)
   {
+    loginRequired();
+
     $r = $this->Nilai_model->delete($id_nilai);
 
     header('Content-Type: application/json; charset=utf-8');

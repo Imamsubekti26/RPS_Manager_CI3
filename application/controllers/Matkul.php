@@ -11,6 +11,8 @@ class Matkul extends CI_Controller {
   
   public function index()
   {
+    loginRequired();
+    
     $search = $_GET['search'];
     $data = $this->Matkul_model->getAll($search);
 

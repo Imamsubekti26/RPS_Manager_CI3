@@ -11,6 +11,8 @@ class Tugas extends CI_Controller {
 
   public function index($id_rps)
   {
+    loginRequired();
+
     $data = $this->Tugas_model->getAll($id_rps);
 
     header('Content-Type: application/json; charset=utf-8');
@@ -19,6 +21,8 @@ class Tugas extends CI_Controller {
   
   public function show($id)
   {
+    loginRequired();
+
     $data = $this->Tugas_model->getOne($id);
 
     header('Content-Type: application/json; charset=utf-8');
@@ -27,6 +31,8 @@ class Tugas extends CI_Controller {
 
   public function insert($id_rps)
   {
+    loginRequired();
+
     $data = json_decode(file_get_contents('php://input'), true);
     $judul = $data['judul'];
     $tugas = $data['tugas'];
@@ -44,6 +50,8 @@ class Tugas extends CI_Controller {
 
   public function edit($id_rps, $id)
   {
+    loginRequired();
+
     $data = json_decode(file_get_contents('php://input'), true);
     $judul = $data['judul'];
     $tugas = $data['tugas'];
@@ -61,6 +69,8 @@ class Tugas extends CI_Controller {
 
   public function delete($id_ref)
   {
+    loginRequired();
+    
     $r = $this->Tugas_model->delete($id_ref);
 
     header('Content-Type: application/json; charset=utf-8');
