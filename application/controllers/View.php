@@ -40,6 +40,14 @@ class View extends CI_Controller {
     $this->load->view('detail', $data);
     $this->load->view('templates/footer');
 	}
+
+  public function print()
+  {
+    $this->load->view('templates/header', ['title' => 'Detail | RPS Manager']);
+    $this->load->view('print');
+    $this->load->view('templates/footer');
+  }
+
 	public function components($compName)
 	{
 		$this->load->view("components/accordions/$compName");
