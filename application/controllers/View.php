@@ -72,4 +72,24 @@ class View extends CI_Controller {
     $this->load->view('templates/footer');
   }
 
+  public function components($id)
+  {
+    $this->load->view("components/$id");
+  }
+  
+  public function accordions($id)
+  {
+    $this->load->view("components/accordions/$id");
+  }
+  
+  public function models($id)
+  {
+    $this->load->view("components/modals/$id");
+  }
+  
+  public function details($id)
+  {
+    $this->load->view("components/details/$id");
+  }
+
 }

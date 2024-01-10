@@ -50,13 +50,13 @@ function changeTab(tabKeBarapa) {
 
 // mengubah status (draf, aktif. arsip) dan menghapus rps jika status adalah -1
 function changeStatusData(status) {
-  const id = searchParams(2);
+  const id = searchParams(3);
   if (confirm("apakah kamu yakin?")) {
     if (status < 0) {
-      fetch(`${window.location.origin}/api/rps/${id}`, {method: "DELETE"});
-      window.location.href = `${window.location.origin}/dashboard`;
+      fetch(`${BASE_URL}/api/rps/${id}`, {method: "DELETE"});
+      window.location.href = `${BASE_URL}/dashboard`;
     } else {
-      fetch(`${window.location.origin}/api/rps/${id}/status/${status}`, {method: "PUT"});
+      fetch(`${BASE_URL}/api/rps/${id}/status/${status}`, {method: "PUT"});
       window.location.reload();
     }
   }
@@ -64,7 +64,7 @@ function changeStatusData(status) {
 
 // tampilkan print page
 function showPrintPage (section) {
-  const id = searchParams(2)
+  const id = searchParams(3)
   window.open(`../print/${id}${section}`, "_blank");
 }
 
@@ -116,8 +116,8 @@ function TextareaAction() {
     },
 
     fetching: function(id, components){
-      const id_rps = searchParams(2);
-      fetch(`../api/rps/${id_rps}/${this.codeX[id]}`, {
+      const id_rps = searchParams(3);
+      fetch(`${BASE_URL}/api/rps/${id_rps}/${this.codeX[id]}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ value: components.form.value }),
@@ -172,17 +172,17 @@ function AccordionAction({primaryKey, namaForm, namaModal, namaComponent, urlApi
   return {
     GetAll: function() {
       $(namaForm).html('');
-      const id_rps = searchParams(2);
-      fetch(`../api/rps/${id_rps}/${urlApi}`)
+      const id_rps = searchParams(3);
+      fetch(`${BASE_URL}/api/rps/${id_rps}/${urlApi}`)
       .then(r => r.json())
       .then(r => {
-        $(namaForm).render(`../../components/${namaComponent}`, r, true);
+        $(namaForm).render(`${BASE_URL}/components/accordions/${namaComponent}`, r, true);
       });
     },
 
     GetOne: function(id) {
-      const id_rps = searchParams(2);
-      fetch(`../api/rps/${id_rps}/${urlApi}/${id}`)
+      const id_rps = searchParams(3);
+      fetch(`${BASE_URL}/api/rps/${id_rps}/${urlApi}/${id}`)
       .then(r => r.json())
       .then(r => {
         dataForm(namaModal).Fill(r);
@@ -191,18 +191,18 @@ function AccordionAction({primaryKey, namaForm, namaModal, namaComponent, urlApi
     },
 
     Delete: function(id){
-      const id_rps = searchParams(2);
+      const id_rps = searchParams(3);
       if(!confirm("apakah kamu yakin untuk menghapus data ini?")) return;
-      fetch(`../api/rps/${id_rps}/${urlApi}/${id}`, {method:'DELETE'})
+      fetch(`${BASE_URL}/api/rps/${id_rps}/${urlApi}/${id}`, {method:'DELETE'})
       .then(r => r.json())
       .then(r => { if(r.success) this.GetAll() });
     },
 
     Add: function() {
       const data = dataForm(namaModal).GetData();
-      const id_rps = searchParams(2);
+      const id_rps = searchParams(3);
 
-      fetch(`../api/rps/${id_rps}/${urlApi}`, {
+      fetch(`${BASE_URL}/api/rps/${id_rps}/${urlApi}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
@@ -221,9 +221,9 @@ function AccordionAction({primaryKey, namaForm, namaModal, namaComponent, urlApi
     
     Update: function() {
       const data = dataForm(namaModal).GetData();
-      const id_rps = searchParams(2);
+      const id_rps = searchParams(3);
       const id = data[primaryKey];
-      fetch(`../api/rps/${id_rps}/${urlApi}/${id}`, {
+      fetch(`${BASE_URL}/api/rps/${id_rps}/${urlApi}/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({id_rps, ...data})
@@ -256,8 +256,8 @@ function ListAction({urlApi, namaForm, namaModal, callback}){
   return {
     GetAll: function(){
       $(namaForm).html('');
-      const id_rps = searchParams(2);
-      fetch(`../api/rps/${id_rps}/${urlApi}`)
+      const id_rps = searchParams(3);
+      fetch(`${BASE_URL}/api/rps/${id_rps}/${urlApi}`)
       .then(r => r.json())
       .then(r => {
         let text = callback(r)
@@ -267,11 +267,11 @@ function ListAction({urlApi, namaForm, namaModal, callback}){
     Add: function(){
       const data = dataForm(namaModal).GetData();
       const inputan = $(`[name=${urlApi}]`);
-      const id_rps = searchParams(2);
+      const id_rps = searchParams(3);
 
       if (inputan.val() === '') return;
       
-      fetch(`../api/rps/${id_rps}/${urlApi}`, {
+      fetch(`${BASE_URL}/api/rps/${id_rps}/${urlApi}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
@@ -287,9 +287,9 @@ function ListAction({urlApi, namaForm, namaModal, callback}){
         })
     },
     Delete: function(id_ref){
-      const id_rps = searchParams(2);
+      const id_rps = searchParams(3);
       if(!confirm("apakah kamu yakin untuk menghapus data ini?")) return;
-      fetch(`../api/rps/${id_rps}/${urlApi}/${id_ref}`, {method:'DELETE'})
+      fetch(`${BASE_URL}/api/rps/${id_rps}/${urlApi}/${id_ref}`, {method:'DELETE'})
         .then(r => r.json())
         .then(r => { if(r.success) this.GetAll() });
     },
@@ -303,8 +303,8 @@ function sendEditBasicInfo(){
     event.preventDefault();
 
     data = dataForm('#modal-change-basic-info').GetData();
-    id = searchParams(2);
-    fetch(`../api/rps/${id}`, {
+    id = searchParams(3);
+    fetch(`${BASE_URL}/api/rps/${id}`, {
       method: "PUT",
       headers: {'Content-Type': 'application/json'},
       body : JSON.stringify(data)

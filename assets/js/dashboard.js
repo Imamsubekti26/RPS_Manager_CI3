@@ -15,7 +15,7 @@ const toggleFilter = (x) => {
 
 // untuk mendapatkan data dari db
 const getData = async (filter, search) => {
-  const x = fetch(`${window.location.origin}/api/rps?filter=${filter}&search=${search}`);
+  const x = fetch(`${BASE_URL}/api/rps?filter=${filter}&search=${search}`);
   const d = (await x).json();
   return await d;
 };
@@ -29,7 +29,7 @@ const renderDataToHTML = async (filter, search, isSwitchFilter = true) => {
     oldDataLength = data.length;
     $("#list-of-matkul").html("");
     $("#list-of-matkul").render(
-      "./application/views/components/matkul-loop-card.php",
+      `${BASE_URL}/components/matkul-loop-card.php`,
       data,
       true
     );

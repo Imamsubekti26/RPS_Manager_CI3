@@ -14,5 +14,8 @@
     <?php if(isset($_SESSION['msg'])): ?>
     <script>alert("<?= $_SESSION['msg'] ?>")</script>
     <?php endif ?>
+    <script>
+      const BASE_URL = "<?= base_url() ?>";
+    </script>
 </head>
 <body>

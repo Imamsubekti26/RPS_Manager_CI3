@@ -58,6 +58,8 @@ $route['auth/register']['GET'] = 'view/register';
 $route['dashboard']['GET'] = 'view/dashboard';
 $route['rps/(:any)']['GET'] = 'view/rps/$1';
 $route['print/(:num)']['GET'] = 'view/print/$1';
+$route['components/(:any)']['GET'] = 'view/components/$1';
+$route['components/accordions/(:any)']['GET'] = 'view/accordions/$1';
 
 $route['api/auth/login']['POST'] = 'auth/login';
 $route['api/auth/register']['POST'] = 'auth/register';
