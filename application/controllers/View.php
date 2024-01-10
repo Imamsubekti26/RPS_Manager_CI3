@@ -49,7 +49,7 @@ class View extends CI_Controller {
     $data['isDisableButton'] = ($data['status'] == 0)? '':'disabled';
     $data['id'] = $id;
     
-    $this->load->view('templates/header', ['title' => 'Detail | RPS Manager']);
+    $this->load->view('templates/header', ['title' => 'Detail | RPS Manager', 'id_rps' => $id]);
     $this->load->view('detail', $data);
     $this->load->view('templates/footer');
 	}
@@ -74,22 +74,13 @@ class View extends CI_Controller {
 
   public function components($id)
   {
-    $this->load->view("components/$id");
+    $this->load->view("components/$id.php");
   }
   
   public function accordions($id)
   {
-    $this->load->view("components/accordions/$id");
+    $this->load->view("components/accordions/$id.php");
   }
-  
-  public function models($id)
-  {
-    $this->load->view("components/modals/$id");
-  }
-  
-  public function details($id)
-  {
-    $this->load->view("components/details/$id");
-  }
+ 
 
 }

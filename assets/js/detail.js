@@ -1,10 +1,3 @@
-// mendapatkan id dari url
-function searchParams(urut) {
-  const currentURL = window.location.href;
-  const urlObject = new URL(currentURL);
-  const yValue = urlObject.pathname.split('/');
-  return yValue[urut];
-}
 
 let oldValue = {
   formgambaranumum: "",
@@ -50,7 +43,7 @@ function changeTab(tabKeBarapa) {
 
 // mengubah status (draf, aktif. arsip) dan menghapus rps jika status adalah -1
 function changeStatusData(status) {
-  const id = searchParams(3);
+  const id = IDRPS;
   if (confirm("apakah kamu yakin?")) {
     if (status < 0) {
       fetch(`${BASE_URL}/api/rps/${id}`, {method: "DELETE"});
@@ -64,7 +57,7 @@ function changeStatusData(status) {
 
 // tampilkan print page
 function showPrintPage (section) {
-  const id = searchParams(3)
+  const id = IDRPS
   window.open(`../print/${id}${section}`, "_blank");
 }
 
@@ -116,7 +109,7 @@ function TextareaAction() {
     },
 
     fetching: function(id, components){
-      const id_rps = searchParams(3);
+      const id_rps = IDRPS;
       fetch(`${BASE_URL}/api/rps/${id_rps}/${this.codeX[id]}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -172,7 +165,7 @@ function AccordionAction({primaryKey, namaForm, namaModal, namaComponent, urlApi
   return {
     GetAll: function() {
       $(namaForm).html('');
-      const id_rps = searchParams(3);
+      const id_rps = IDRPS;
       fetch(`${BASE_URL}/api/rps/${id_rps}/${urlApi}`)
       .then(r => r.json())
       .then(r => {
@@ -181,7 +174,7 @@ function AccordionAction({primaryKey, namaForm, namaModal, namaComponent, urlApi
     },
 
     GetOne: function(id) {
-      const id_rps = searchParams(3);
+      const id_rps = IDRPS;
       fetch(`${BASE_URL}/api/rps/${id_rps}/${urlApi}/${id}`)
       .then(r => r.json())
       .then(r => {
@@ -191,7 +184,7 @@ function AccordionAction({primaryKey, namaForm, namaModal, namaComponent, urlApi
     },
 
     Delete: function(id){
-      const id_rps = searchParams(3);
+      const id_rps = IDRPS;
       if(!confirm("apakah kamu yakin untuk menghapus data ini?")) return;
       fetch(`${BASE_URL}/api/rps/${id_rps}/${urlApi}/${id}`, {method:'DELETE'})
       .then(r => r.json())
@@ -200,7 +193,7 @@ function AccordionAction({primaryKey, namaForm, namaModal, namaComponent, urlApi
 
     Add: function() {
       const data = dataForm(namaModal).GetData();
-      const id_rps = searchParams(3);
+      const id_rps = IDRPS;
 
       fetch(`${BASE_URL}/api/rps/${id_rps}/${urlApi}`, {
         method: "POST",
@@ -221,7 +214,7 @@ function AccordionAction({primaryKey, namaForm, namaModal, namaComponent, urlApi
     
     Update: function() {
       const data = dataForm(namaModal).GetData();
-      const id_rps = searchParams(3);
+      const id_rps = IDRPS;
       const id = data[primaryKey];
       fetch(`${BASE_URL}/api/rps/${id_rps}/${urlApi}/${id}`, {
         method: "PUT",
@@ -256,7 +249,7 @@ function ListAction({urlApi, namaForm, namaModal, callback}){
   return {
     GetAll: function(){
       $(namaForm).html('');
-      const id_rps = searchParams(3);
+      const id_rps = IDRPS;
       fetch(`${BASE_URL}/api/rps/${id_rps}/${urlApi}`)
       .then(r => r.json())
       .then(r => {
@@ -267,7 +260,7 @@ function ListAction({urlApi, namaForm, namaModal, callback}){
     Add: function(){
       const data = dataForm(namaModal).GetData();
       const inputan = $(`[name=${urlApi}]`);
-      const id_rps = searchParams(3);
+      const id_rps = IDRPS;
 
       if (inputan.val() === '') return;
       
@@ -287,7 +280,7 @@ function ListAction({urlApi, namaForm, namaModal, callback}){
         })
     },
     Delete: function(id_ref){
-      const id_rps = searchParams(3);
+      const id_rps = IDRPS;
       if(!confirm("apakah kamu yakin untuk menghapus data ini?")) return;
       fetch(`${BASE_URL}/api/rps/${id_rps}/${urlApi}/${id_ref}`, {method:'DELETE'})
         .then(r => r.json())
@@ -303,7 +296,7 @@ function sendEditBasicInfo(){
     event.preventDefault();
 
     data = dataForm('#modal-change-basic-info').GetData();
-    id = searchParams(3);
+    id = IDRPS;
     fetch(`${BASE_URL}/api/rps/${id}`, {
       method: "PUT",
       headers: {'Content-Type': 'application/json'},

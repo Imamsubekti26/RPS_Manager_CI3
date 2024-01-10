@@ -29,7 +29,7 @@ const renderDataToHTML = async (filter, search, isSwitchFilter = true) => {
     oldDataLength = data.length;
     $("#list-of-matkul").html("");
     $("#list-of-matkul").render(
-      `${BASE_URL}/components/matkul-loop-card.php`,
+      `${BASE_URL}/components/matkul-loop-card`,
       data,
       true
     );
