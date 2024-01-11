@@ -28,7 +28,7 @@
       @media print {
         @page {
             size: A4 landscape;
-            margin: 0;
+            margin: 2.5rem 5rem 2.5rem 5rem;
         }
       }
     </style>
