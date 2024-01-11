@@ -5,6 +5,7 @@
       <button class="btn btn-secondary">Kembali</button>
     </a>
     <div class="d-flex gap-3 align-items-center">
+      <button class="btn btn-outline-secondary" onclick="printRPS()">Print RPS</button>
       <?php if($status == 0):?>
         <button class="btn btn-outline-danger" onclick="changeStatusData(-1)">Hapus RPS</button>
         <button class="btn btn-primary" onclick="changeStatusData(1)">Aktifkan RPS</button>

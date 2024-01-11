@@ -25,6 +25,12 @@
         margin-top: 12px;
         margin-bottom: 12px;
       }
+      @media print {
+        @page {
+            size: A4 landscape;
+            margin: 0;
+        }
+      }
     </style>
   </head>
   <body>

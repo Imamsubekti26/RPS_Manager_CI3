@@ -17,6 +17,14 @@ const tooltipList = [...tooltipTriggerList].map(
   (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
 );
 
+// print RPS
+function printRPS(){
+  const newWindow = window.open(`${BASE_URL}/print/${IDRPS}`, "_blank");
+  $(newWindow).on("load", function() {
+      newWindow.print();
+  });
+}
+
 // mengubah tab yang ditampilkan
 function changeTab(tabKeBarapa) {
   const menu = $("#menubar > nav").children();
